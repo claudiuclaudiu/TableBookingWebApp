@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Add table</title>
 </head>
 <body>
-$END$
+
+<form method="post" th:action="@{/add-new-table}" th:object="${table}">
+
+    <label for="id">ID:</label><br>
+    <input type="number" id="id" name="id" th:field="*{id}"><br>
+
+    <label for="guests">Number of guests:</label><br>
+    <input type="number" id="guests" name="guests" th:field="*{numberOfGuests}"><br>
+
+    <label for="holder">Reservation holder contact:</label><br>
+    <input type="text" id="holder" name="holder" th:field="*{reservationHolderContact}"><br>
+
+    <label for="holdername">Reservation holder name:</label><br>
+    <input type="text" id="holdername" name="holdername" th:field="*{reservationHolder}"><br>
+
+
+    <label for="bar">Bar seats:</label><br>
+    <input type="checkbox" id="bar" name="bar" th:field="*{barSeats}"><br>
+
+    <label for="clubs">Choose club location:</label><br>
+    <select name="clubs" id="clubs" th:object="${club}">
+        <option th:each="club:${club}" th:value="${club.id}" th:text="${club.name}">
+
+
+        </option>
+
+    </select>
+
+
+    <br><br>
+
+    <input type="submit" value="Submit">
+
+    <br><br>
+
+    <a href="/home">HOME</a><br>
+
+
+</form>
+
 </body>
 </html>

@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Reservation list</title>
 </head>
 <body>
-$END$
+
+<h2>Reservation list</h2>
+<ul>
+    <li th:each="table: ${table}">
+        <p th:text="'#'+${table.id}"></p>
+        <p th:text="'Reservation holder: '+${table.reservationHolder}"></p>
+        <p th:text="'Contact number: '+${table.reservationHolderContact}"></p>
+        <p th:text="'Number of guests: '+${table.numberOfGuests}"></p>
+        <p th:text="'Bar seats: '+${table.barSeats}"></p>
+
+        <a th:href="@{/edit-table-page/{tableId}(tableId=${table.id})}">Edit</a>
+
+        <a th:href="@{delete-table/{id}(id=${table.id})}">Delete</a>
+
+
+    </li>
+</ul>
+<br><br>
+
+<a href="/home">HOME</a><br>
 </body>
 </html>

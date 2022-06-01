@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+
+    <title>Add Club</title>
 </head>
 <body>
-$END$
+
+<h2>Add Clubs company into the system</h2>
+
+<form method="post" th:action="@{/add-new-club}" th:object="${club}">
+
+    <label for="name">Club name:</label><br>
+    <input type="text" id="name" name="name" th:field="*{name}"><br>
+
+    <label for="address">Club address:</label><br>
+    <input type="text" id="address" name="address" th:field="*{address}"><br>
+
+    <label for="phone">Phone number:</label><br>
+    <input type="number" id="phone" name="phone" th:field="*{phoneNumber}"><br>
+
+    <br><br>
+
+    <input type="submit" value="Add Club!">
+
+    <br><br>
+
+    <a href="/home">HOME</a><br>
+
+</form>
+
 </body>
 </html>

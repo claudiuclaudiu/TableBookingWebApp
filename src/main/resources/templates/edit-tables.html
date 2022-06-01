@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Edit table</title>
 </head>
 <body>
-$END$
+
+<h2>Edit table reservation</h2>
+
+<form method="post" th:action="@{/edit-new-table}" th:object="${table}">
+
+    <label for="ids">ID:</label><br>
+    <input type="number" id="ids" name="ids" th:field="*{id}"><br>
+
+    <label for="name">Reservation holder name:</label><br>
+    <input type="text" id="name" name="name" th:field="*{reservationHolder}"><br>
+
+    <label for="guests">Number of guests:</label><br>
+    <input type="number" id="guests" name="guets" th:field="*{numberOfGuests}"><br>
+
+    <label for="contact">Reservation holder contact:</label><br>
+    <input type="number" id="contact" name="contact" th:field="*{reservationHolderContact}"><br>
+
+    <label for="clubs">Choose club location:</label><br>
+    <select name="clubs" id="clubs" th:object="${club}">
+         <option th:each="club:${club}" th:value="${club.id}" th:text="${club.name}">
+
+
+        </option>
+
+    </select>
+
+
+    <br><br>
+
+    <input type="submit" value="Submit">
+
+    <br><br>
+
+    <a href="/home">HOME</a><br>
+</form>
+
 </body>
 </html>

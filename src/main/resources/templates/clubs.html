@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>View Clubs list</title>
 </head>
 <body>
-$END$
+
+<h2>Clubs</h2>
+
+<ul style="...">
+    <li th:each="club: ${club}">
+        <p th:text="${club.id}+' Club name: '+ ${club.name}"></p>
+        <p th:text="'Address: '+ ${club.address}"></p>
+        <p th:text="'Phone number: '+${club.phoneNumber}"></p>
+
+        <a th:href="@{edit-club-page/{clubId}( clubId=${club.id})}">Edit</a>
+
+        <a th:href="@{delete-clubs/{id} (id=${club.id})}">Delete</a>
+
+        <a href="@{view-reservation/{tableId}(tableId=${table.id})}">View table</a>
+
+
+
+
+    </li>
+
+    <br><br>
+
+    <a href="/home">HOME</a><br>
+</ul>
+
 </body>
+
 </html>
