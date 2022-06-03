@@ -2,67 +2,72 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
+    <title>View reservation list</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <div>
-        <nav class="navbar navbar-light bg-light">
-            <a href="/home"></a><a class="navbar-brand" href="/home">
-            <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-monitor-hotel-kiranshastry-lineal-color-kiranshastry.png"
-                 alt="" width="30" height="24" class="d-inline-block align-text-top">
-            Reservation list
-        </a>
+</head>
+<div>
+    <nav class="navbar navbar-light bg-light">
+        <a href="/home"></a><a class="navbar-brand" href="/home">
+        <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-monitor-hotel-kiranshastry-lineal-color-kiranshastry.png"
+             alt="" width="30" height="24" class="d-inline-block align-text-top">
+        Reservation list
+    </a>
 
 
-            <a href="/add-clubs">
-                <button type="button" class="btn btn-outline-primary">Add clubs</button>
-            </a><br>
-            <a href="/add-reservation">
-                <button type="button" class="btn btn-outline-primary">Add reservation</button>
-            </a><br>
-            <a href="/view-clubs">
-                <button type="button" class="btn btn-outline-primary">View all clubs</button>
-            </a><br>
-            <a href="/view-reservation">
-                <button type="button" class="btn btn-outline-primary">View all reservations</button>
-            </a><br>
+        <a href="/add-clubs">
+            <button type="button" class="btn btn-outline-primary">Add clubs</button>
+        </a><br>
+        <a href="/add-tables">
+            <button type="button" class="btn btn-outline-primary">Add reservation</button>
+        </a><br>
+        <a href="/view-clubs">
+            <button type="button" class="btn btn-outline-primary">View all clubs</button>
+        </a><br>
+        <a href="/view-tables">
+            <button type="button" class="btn btn-outline-primary">View all reservations</button>
+        </a><br>
 
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
 
-        </nav>
-    </div>
-    <table class="reservation">
-        <tr>
-            <th>ID</th>
-            <th>Reservation holder</th>
-            <th>Contact number</th>
-            <th>Number of guests</th>
-            <th>Bar seats</th>
-        </tr>
+    </nav>
+</div>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Reservation holder</th>
+        <th>Contact number</th>
+        <th>Number of guests</th>
+        <th>Date and time</th>
+        <th>Bar seats</th>
+    </tr>
 
-        <tr th:each="reservation: ${reservation}">
-            <td th:text="${reservation.id}"></td>
-            <td th:text="${reservation.reservationHolder}"></td>
-            <td th:text="${reservation.reservationHolderContact}"></td>
-            <td th:text="${reservation.numberOfGuests}"></td>
-            <td th:text="${reservation.barSeats}"></td>
+    <tr th:each="table: ${table}">
+        <td th:text="${table.id}"></td>
+        <td th:text="${table.reservationHolder}"></td>
+        <td th:text="${table.reservationHolderContact}"></td>
+        <td th:text="${table.numberOfGuests}"></td>
+        <td th:text="${table.dateTime}"></td>
+        <td th:text="${table.barSeats}"></td>
 
-            <td><a th:href="@{/edit-reservation-page/{reservationId}(reservationId=${reservation.id})}">
-                <button type="button" class="btn btn-outline-warning">Edit</button>
-            </a></td>
-            <br>
+        <td><a th:href="@{/edit-table-page/{tableId}(tableId=${table.id})}">
+            <button type="button" class="btn btn-outline-warning">Edit</button>
+        </a></td>
+        <br>
 
-            <td><a th:href="@{delete-reservation/{id}(id=${reservation.id})}">
-                <button type="button" class="btn btn-outline-danger">Delete</button>
-            </a></td>
-            <br>
+        <td><a th:href="@{delete-table/{id}(id=${table.id})}">
+            <button type="button" class="btn btn-outline-danger">Delete</button>
+        </a></td>
+        <br>
 
-        </tr>
+    </tr>
 
-    </table>
-    <br><br>
+</table>
+<br><br>
 
-    </body>
+</body>
 </html>

@@ -17,13 +17,13 @@
             <a href="/add-clubs">
                 <button type="button" class="btn btn-outline-primary">Add clubs</button>
             </a><br>
-            <a href="/add-reservation">
+            <a href="/add-tables">
                 <button type="button" class="btn btn-outline-primary">Add reservation</button>
             </a><br>
             <a href="/view-clubs">
                 <button type="button" class="btn btn-outline-primary">View all clubs</button>
             </a><br>
-            <a href="/view-table">
+            <a href="/view-tables">
                 <button type="button" class="btn btn-outline-primary">View all reservations</button>
             </a><br>
 
@@ -34,43 +34,45 @@
 
         </nav>
     </div>
-<div class="container-fluid">
-<form method="post" th:action="@{/add-new-reservation}" th:object="${reservation}">
+    <div class="container-fluid">
+        <form method="post" th:action="@{/add-new-table}" th:object="${table}">
 
-    <label for="id">ID:</label><br>
-    <input type="number" id="id" name="id" th:field="*{id}"><br>
-
-
-    <label for="guests">Number of guests:</label><br>
-    <input type="number" id="guests" name="guests" th:field="*{numberOfGuests}"><br>
-
-    <label for="holder">Reservation holder contact:</label><br>
-    <input type="text" id="holder" name="holder" th:field="*{reservationHolderContact}"><br>
-
-    <label for="holdername">Reservation holder name:</label><br>
-    <input type="text" id="holdername" name="holdername" th:field="*{reservationHolder}"><br>
+            <label for="id">ID:</label><br>
+            <input type="number" id="id" name="id" th:field="*{id}"><br>
 
 
-    <label for="bar">Bar seats:</label><br>
-    <input type="checkbox" id="bar" name="bar" th:field="*{barSeats}"><br>
+            <label for="guests">Number of guests:</label><br>
+            <input type="number" id="guests" name="guests" th:field="*{numberOfGuests}"><br>
 
-    <label for="clubs">Choose club location:</label><br>
-    <select name="clubs" id="clubs" th:object="${club}">
-        <option th:each="club:${club}" th:value="${club.id}" th:text="${club.name}">
+            <label for="holder">Reservation holder contact:</label><br>
+            <input type="text" id="holder" name="holder" th:field="*{reservationHolderContact}"><br>
+
+            <label for="holdername">Reservation holder name:</label><br>
+            <input type="text" id="holdername" name="holdername" th:field="*{reservationHolder}"><br>
+
+            <label for="date">Date and time</label><br>
+            <input type="datetime-local" id="date" name="date" th:field="*{dateTime}"><br>
+
+            <label for="bar">Bar seats:</label><br>
+            <input type="checkbox" id="bar" name="bar" th:field="*{barSeats}"><br>
+
+            <label for="clubs">Choose club location:</label><br>
+            <select name="clubs" id="clubs" th:object="${club}">
+                <option th:each="club:${club}" th:value="${club.id}" th:text="${club.name}">
 
 
-        </option>
+                </option>
 
-    </select>
-
-
-    <br><br>
-
-    <input type="submit" class="btn btn-outline-success" value="Add reservation!">
-
-    <br><br>
+            </select>
 
 
-</form>
-</div>
+            <br><br>
+
+            <input type="submit" class="btn btn-outline-success" value="Add reservation!">
+
+            <br><br>
+
+
+        </form>
+    </div>
 </html>

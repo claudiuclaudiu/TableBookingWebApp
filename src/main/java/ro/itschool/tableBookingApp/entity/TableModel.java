@@ -9,15 +9,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name="reservation_details")
 
-public class ReservationModel {
+public class TableModel {
 
     @Id
     private int id;
     private String reservationHolder;
     private int numberOfGuests;
     private String reservationHolderContact;
+
+    private String dateTime;
     private boolean barSeats;
-@ManyToOne
+
+    @ManyToOne
     private ClubModel clubModel;
 
     // setters and getters//
@@ -70,5 +73,13 @@ public class ReservationModel {
 
     public void setClubModel(ClubModel clubModel) {
         this.clubModel = clubModel;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 }

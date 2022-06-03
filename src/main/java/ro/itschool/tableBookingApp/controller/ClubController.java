@@ -93,7 +93,7 @@ public class ClubController {
         model.addAttribute("club", clubModel);
         model.addAttribute("table", tables);
 
-        return "reservation";
+        return "tables";
 
     }
 
@@ -103,4 +103,3 @@ public class ClubController {
     }
 
 }
-
