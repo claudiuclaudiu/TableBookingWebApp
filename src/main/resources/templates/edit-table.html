@@ -8,7 +8,7 @@
 
 <h2>Edit table reservation</h2>
 
-<form method="post" th:action="@{/edit-new-table}" th:object="${table}">
+<form method="post" th:action="@{/edit-new-reservation}" th:object="${reservation}">
 
     <label for="ids">ID:</label><br>
     <input type="number" id="ids" name="ids" th:field="*{id}"><br>

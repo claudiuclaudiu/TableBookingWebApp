@@ -4,57 +4,57 @@ package ro.itschool.tableBookingApp.dao.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ro.itschool.tableBookingApp.dao.ClubRepository;
-import ro.itschool.tableBookingApp.dao.TableRepository;
-import ro.itschool.tableBookingApp.entity.TableModel;
+import ro.itschool.tableBookingApp.dao.ReservationRepository;
+import ro.itschool.tableBookingApp.entity.ReservationModel;
 
 import java.util.List;
 import java.util.Optional;
 
 @Component
-public class TableService {
+public class ReservationService {
 
     @Autowired
-    private TableRepository tableRepository;
+    private ReservationRepository reservationRepository;
     @Autowired
     private ClubRepository clubRepository;
 
 
-    public void addTable(TableModel table) {
+    public void addReservation(ReservationModel reservation) {
 
-        tableRepository.save(table);
+        reservationRepository.save(reservation);
     }
 
-    public List<TableModel> getTables() {
+    public List<ReservationModel> getReservation() {
 
-        List<TableModel> models = tableRepository.findAll();
+        List<ReservationModel> models = reservationRepository.findAll();
         return models;
     }
 
-    public void removeTable(int id) {
-        tableRepository.deleteById(id);
+    public void removeReservation(int id) {
+        reservationRepository.deleteById(id);
     }
 
-    public List<TableModel> searchByName(String reservationHolder) {
-        return tableRepository.searchByReservationHolder(reservationHolder);
+    public List<ReservationModel> searchByName(String reservationHolder) {
+        return reservationRepository.searchByReservationHolder(reservationHolder);
     }
 
-    public TableModel getTables(int tableId) {
-        Optional<TableModel> optionalTableModel = tableRepository.findById(tableId);
-        TableModel tableModel = optionalTableModel.get();
-        return tableModel;
+    public ReservationModel getReservation(int reservationId) {
+        Optional<ReservationModel> optionalReservationModelModel = reservationRepository.findById(reservationId);
+        ReservationModel reservationModel = optionalReservationModelModel.get();
+        return reservationModel;
     }
 
-    public void updateTable(TableModel modifiedTable) {
+    public void updateReservation(ReservationModel modifiedReservation) {
 
-        TableModel existingTable = getTables(modifiedTable.getId());
+        ReservationModel existingTable = getReservation(modifiedReservation.getId());
 
-        existingTable.setReservationHolder(modifiedTable.getReservationHolderContact());
-        existingTable.setReservationHolder(modifiedTable.getReservationHolder());
-        existingTable.setNumberOfGuests(modifiedTable.getNumberOfGuests());
-        existingTable.setId(modifiedTable.getId());
-        existingTable.setBarSeats(modifiedTable.isBarSeats());
+        existingTable.setReservationHolder(modifiedReservation.getReservationHolderContact());
+        existingTable.setReservationHolder(modifiedReservation.getReservationHolder());
+        existingTable.setNumberOfGuests(modifiedReservation.getNumberOfGuests());
+        existingTable.setId(modifiedReservation.getId());
+        existingTable.setBarSeats(modifiedReservation.isBarSeats());
 
-        tableRepository.save(modifiedTable);
+        reservationRepository.save(modifiedReservation);
 
     }
 

@@ -8,76 +8,89 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ro.itschool.tableBookingApp.dao.service.ClubService;
-import ro.itschool.tableBookingApp.dao.service.TableService;
+import ro.itschool.tableBookingApp.dao.service.ReservationService;
 import ro.itschool.tableBookingApp.entity.ClubModel;
-import ro.itschool.tableBookingApp.entity.TableModel;
+import ro.itschool.tableBookingApp.entity.ReservationModel;
 
 import java.util.List;
 
 @Controller
-public class TableController {
+public class ReservationController {
 
     @Autowired
-    private TableService tableService;
+    private ReservationService reservationService;
     @Autowired
     private ClubService clubService;
 
 
-    @GetMapping("view-tables")
-    public String viewTables(Model model) {
+    @GetMapping("view-reservation")
+    public String viewReservations(Model model) {
 
-        List<TableModel> tableModels = tableService.getTables();
-        model.addAttribute("table", tableModels);
+        List<ReservationModel> reservationModels = reservationService.getReservation();
+        model.addAttribute("reservation", reservationModels);
 
-        return "tables";
+        return "reservation";
 
     }
 
-    @GetMapping("add-tables")
-    public String addTablePage(Model model) {
+    @GetMapping("add-reservation")
+    public String addReservationPage(Model model) {
 
         List<ClubModel> clubs = clubService.getClubs();
-        model.addAttribute("table", new TableModel());
+        model.addAttribute("reservation", new ReservationModel());
         model.addAttribute("club", clubs);
 
-        return "add-tables";
+        return "add-reservation";
     }
 
-    @PostMapping("add-new-table")
-    public String addNewTable(TableModel table) {
+    @PostMapping("add-new-reservation")
+    public String addNewReservation(ReservationModel reservation) {
 
-        tableService.addTable(table);
-        return "redirect:/view-tables";
+        reservationService.addReservation(reservation);
+        return "redirect:/view-reservation";
     }
 
 
-    @GetMapping("edit-table-page/{tableId}")
-    public String editTablePage(@PathVariable("tableId") int tableId, Model model) {
+    @GetMapping("edit-reservation-page/{reservationId}")
+    public String editReservationPage(@PathVariable("reservationId") int reservationId, Model model) {
 
-        TableModel tableModel = tableService.getTables(tableId);
+        ReservationModel reservationModel = reservationService.getReservation(reservationId);
         List<ClubModel> clubs = clubService.getClubs();
 
-        model.addAttribute("table", tableModel);
+        model.addAttribute("reservation", reservationModel);
         model.addAttribute("club", clubs);
 
-        return "edit-tables";
+        return "edit-reservation";
     }
 
-    @GetMapping("delete-table/{id}")
-    public String deleteTable(@PathVariable("id") int tableId) {
+    @GetMapping("delete-reservation/{id}")
+    public String deleteReservation(@PathVariable("id") int reservationId) {
 
-        tableService.removeTable(tableId);
+        reservationService.removeReservation(reservationId);
 
-        return "redirect:/view-tables";
+        return "redirect:/view-reservation";
     }
 
-    @PostMapping("edit-new-table")
-    public String editTable(TableModel tableModel) {
+    @PostMapping("edit-new-reservation")
+    public String editReservation(ReservationModel reservationModel) {
 
-        tableService.updateTable(tableModel);
+        reservationService.updateReservation(reservationModel);
 
-        return "redirect:/view-tables";
+        return "redirect:/view-reservation";
     }
+
+
+//    @GetMapping("view-table-page/{tableId}")
+//    public String viewTablePage(@PathVariable("tableId") int tableId, Model model) {
+//
+//        TableModel tableModel = tableService.getTables(tableId);
+//        List<ClubModel> clubs = clubService.getClubs();
+//
+//        model.addAttribute("table", tableModel);
+//        model.addAttribute("club", clubs);
+//
+//        return "view-tables";
+//    }
 
 
 }

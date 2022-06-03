@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="reservation_details")
 
-public class TableModel {
+public class ReservationModel {
 
     @Id
     private int id;
@@ -17,8 +17,7 @@ public class TableModel {
     private int numberOfGuests;
     private String reservationHolderContact;
     private boolean barSeats;
-
-    @ManyToOne
+@ManyToOne
     private ClubModel clubModel;
 
     // setters and getters//
