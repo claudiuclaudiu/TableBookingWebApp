@@ -51,6 +51,8 @@
         <td th:text="${club.name}"></td>
         <td th:text="${club.address}"></td>
         <td th:text="${club.phoneNumber}"></td>
+
+        <td><a th:href="@{view-club-reservation-page/{clubId} (clubId=${club.id})}"></a><button type="button" class="btn btn-outline-warning">View reservations</button></a></td><br>
         <td><a th:href="@{edit-club-page/{clubId}( clubId=${club.id})}"><button type="button" class="btn btn-outline-warning">Edit</button></a></td><br>
         <td><a th:href="@{delete-clubs/{id} (id=${club.id})}"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
 
@@ -66,6 +68,8 @@
 <br><br>
 
 
+</body>
+<body background="https://www.nicepng.com/png/full/376-3764411_events-logo-png-event-management.png">
 </body>
 
 </html>

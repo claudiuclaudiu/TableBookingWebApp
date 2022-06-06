@@ -27,7 +27,7 @@
                 <button type="button" class="btn btn-outline-primary">View all reservations</button>
             </a><br>
 
-            <form class="form-inline">
+            <form class="form-inline" th:action="@{/search-club}" th:object="${club}">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
@@ -35,10 +35,8 @@
         </nav>
     </div>
 
-<body>
-
+<body background="https://www.nicepng.com/png/full/376-3764411_events-logo-png-event-management.png">
 </body>
-
 
 
 </html>

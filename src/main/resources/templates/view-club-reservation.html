@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>View reservation list</title>
+    <title>View club's reservation</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -12,7 +12,7 @@
         <a href="/home"></a><a class="navbar-brand" href="/home">
         <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-monitor-hotel-kiranshastry-lineal-color-kiranshastry.png"
              alt="" width="30" height="24" class="d-inline-block align-text-top">
-        Edit club list
+        View club's reservation
     </a>
 
 
@@ -36,28 +36,42 @@
 
     </nav>
 </div>
-<div class="container-fluid">
-<form method="post" th:action="@{/edit-new-club}" th:object="${club}">
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Reservation holder</th>
+        <th>Contact number</th>
+        <th>Number of guests</th>
+        <th>Date and time</th>
+        <th>Bar seats</th>
+    </tr>
 
-    <label for="id">ID:</label><br>
-    <input type="number" id="id" th:field="*{id}"><br>
+    <tr th:each="table: ${tables}">
+        <td th:text="${table.id}"></td>
+        <td th:text="${table.reservationHolder}"></td>
+        <td th:text="${table.reservationHolderContact}"></td>
+        <td th:text="${table.numberOfGuests}"></td>
+        <td th:text="${table.dateTime}"></td>
+        <td th:text="${table.barSeats}"></td>
 
-    <label for="name">Club name:</label><br>
-    <input type="text" id="name" name="name" th:field="*{name}"><br>
+        <td><a th:href="@{/edit-table-page/{tableId}(tableId=${table.id})}">
+            <button type="button" class="btn btn-outline-warning">Edit</button>
+        </a></td>
+        <br>
 
-    <label for="address">Club address:</label><br>
-    <input type="text" id="address" name="address" th:field="*{address}"><br>
-
-    <label for="phone">Phone number:</label><br>
-    <input type="number" id="phone" name="phone" th:field="*{phoneNumber}"><br><br>
-
-    <input type="submit" class="btn btn-outline-success" value="Confirm changes!">
-
-    <br><br>
+        <td><a th:href="@{delete-table/{id}(id=${table.id})}">
+            <button type="button" class="btn btn-outline-danger">Delete</button>
+        </a></td>
+        <br>
 
 
-</form>
-</div>
+
+    </tr>
+
+</table>
+<br><br>
+
+</body>
 <body background="https://www.nicepng.com/png/full/376-3764411_events-logo-png-event-management.png">
 </body>
 </html>

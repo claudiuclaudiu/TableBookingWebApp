@@ -21,7 +21,7 @@ public class TableModel {
     private boolean barSeats;
 
     @ManyToOne
-    private ClubModel clubModel;
+    private ClubModel clubModel;         //!!!
 
     // setters and getters//
     //---------------------//

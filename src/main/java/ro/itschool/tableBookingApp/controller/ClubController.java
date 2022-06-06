@@ -97,6 +97,27 @@ public class ClubController {
 
     }
 
+
+    @GetMapping("search-club")
+    public String searchClubName(String name, Model model) {
+
+        List<ClubModel> foundClubs = clubService.searchByClubName(name);
+        model.addAttribute("club", foundClubs);
+
+        return "search-club";
+
+    }
+
+    @GetMapping("search-club-page")
+    public String searchClub(Model model){
+        model.addAttribute("club", new ClubModel());
+
+        return "found-clubs";
+
+    }
+
+
+
     @GetMapping("home")
     public String homePage(ClubModel clubModel) {
         return "home-page";

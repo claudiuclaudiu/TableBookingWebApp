@@ -2,6 +2,7 @@ package ro.itschool.tableBookingApp.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ public class TableController {
 
     }
 
+
     @GetMapping("add-tables")
     public String addTablePage(Model model) {
 
@@ -63,18 +65,29 @@ public class TableController {
         return "edit-table";
     }
 
-    @GetMapping("delete-table/{id}")
-    public String deleteTable(@PathVariable("id") int tableId) {
-
-        tableService.removeTable(tableId);
-
-        return "redirect:/view-tables";
-    }
-
     @PostMapping("edit-new-table")
     public String editTable(TableModel tableModel) {
 
         tableService.updateTable(tableModel);
+
+        return "redirect:/view-tables";
+    }
+
+
+    @GetMapping("view-club-reservation-page/{clubId}")
+    public String viewTableReservation(@PathVariable("clubId") int clubId, Model model) {
+
+        List<TableModel> tableModels= tableService.viewReservation(clubId);
+
+        model.addAttribute("tables", tableModels);
+
+        return "view-club-reservation";
+    }
+
+    @GetMapping("delete-table/{id}")
+    public String deleteTable(@PathVariable("id") int tableId) {
+
+        tableService.removeTable(tableId);
 
         return "redirect:/view-tables";
     }

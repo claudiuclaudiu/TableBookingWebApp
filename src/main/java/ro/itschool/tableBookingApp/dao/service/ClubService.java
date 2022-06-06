@@ -7,6 +7,7 @@ import ro.itschool.tableBookingApp.dao.ClubRepository;
 import ro.itschool.tableBookingApp.dao.TableRepository;
 import ro.itschool.tableBookingApp.entity.ClubModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,6 +50,20 @@ public class ClubService {
         existingClub.setName(modifiedClub.getName());
 
         clubRepository.save(modifiedClub);
+    }
+
+    public List<ClubModel> searchByClubName(String startWith){
+
+        List<ClubModel> clubModels = clubRepository.findAll();
+        List<ClubModel> clubResults = new ArrayList<>();
+
+        for (ClubModel clubModel : clubModels){
+            String clubName = clubModel.getName();
+            if (clubName.startsWith(startWith)) {
+                clubResults.add(clubModel);
+            }
+        }
+        return clubResults;
     }
 
 }

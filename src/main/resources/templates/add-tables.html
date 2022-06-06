@@ -57,7 +57,7 @@
             <input type="checkbox" id="bar" name="bar" th:field="*{barSeats}"><br>
 
             <label for="clubs">Choose club location:</label><br>
-            <select name="clubs" id="clubs" th:object="${club}">
+            <select name="clubs" id="clubs" th:field="*{clubModel.id}">
                 <option th:each="club:${club}" th:value="${club.id}" th:text="${club.name}">
 
 
@@ -75,4 +75,6 @@
 
         </form>
     </div>
+<body background="https://www.nicepng.com/png/full/376-3764411_events-logo-png-event-management.png">
+</body>
 </html>
