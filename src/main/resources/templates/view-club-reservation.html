@@ -46,7 +46,7 @@
         <th>Bar seats</th>
     </tr>
 
-    <tr th:each="table: ${tables}">
+    <tr th:each="table: ${table}">
         <td th:text="${table.id}"></td>
         <td th:text="${table.reservationHolder}"></td>
         <td th:text="${table.reservationHolderContact}"></td>

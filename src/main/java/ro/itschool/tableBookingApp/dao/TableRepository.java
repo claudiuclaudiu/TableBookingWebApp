@@ -17,6 +17,7 @@ public interface TableRepository extends JpaRepository<TableModel, Integer> {
     @Query(value = "from TableModel where reservationHolderContact like :startWith%")
     List<TableModel> reservationHolderContact (@Param("startWith")Integer param);
 
-    @Query(value = "from TableModel where id like :startWith%")
-    List<TableModel> viewReservedTable(@Param("startWith")Integer param);
+
+   @Query(value ="from TableModel where id=:id")
+        List<TableModel> viewReservedTable(@Param("id") int id);
 }

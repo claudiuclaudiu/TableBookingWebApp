@@ -7,35 +7,34 @@
 
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-    <div>
-        <nav class="navbar navbar-light bg-light">
-            <a href="/home"></a><a class="navbar-brand" href="/home">
-            <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-monitor-hotel-kiranshastry-lineal-color-kiranshastry.png"
-                 alt="" width="30" height="24" class="d-inline-block align-text-top">
-            Club list
-        </a>
+<div>
+    <nav class="navbar navbar-light bg-light">
+        <a href="/home"></a><a class="navbar-brand" href="/home">
+        <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-monitor-hotel-kiranshastry-lineal-color-kiranshastry.png"
+             alt="" width="30" height="24" class="d-inline-block align-text-top">
+        Club list
+    </a>
 
+        <a href="/add-clubs">
+            <button type="button" class="btn btn-outline-primary">Add clubs</button>
+        </a><br>
+        <a href="/add-tables">
+            <button type="button" class="btn btn-outline-primary">Add reservation</button>
+        </a><br>
+        <a href="/view-clubs">
+            <button type="button" class="btn btn-outline-primary">View all clubs</button>
+        </a><br>
+        <a href="/view-tables">
+            <button type="button" class="btn btn-outline-primary">View all reservations</button>
+        </a><br>
 
-            <a href="/add-clubs">
-                <button type="button" class="btn btn-outline-primary">Add clubs</button>
-            </a><br>
-            <a href="/add-tables">
-                <button type="button" class="btn btn-outline-primary">Add reservation</button>
-            </a><br>
-            <a href="/view-clubs">
-                <button type="button" class="btn btn-outline-primary">View all clubs</button>
-            </a><br>
-            <a href="/view-tables">
-                <button type="button" class="btn btn-outline-primary">View all reservations</button>
-            </a><br>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
 
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
-        </nav>
-    </div>
+    </nav>
+</div>
 
 <table class="table">
     <tr>
@@ -52,18 +51,22 @@
         <td th:text="${club.address}"></td>
         <td th:text="${club.phoneNumber}"></td>
 
-        <td><a th:href="@{view-club-reservation-page/{clubId} (clubId=${club.id})}"></a><button type="button" class="btn btn-outline-warning">View reservations</button></a></td><br>
-        <td><a th:href="@{edit-club-page/{clubId}( clubId=${club.id})}"><button type="button" class="btn btn-outline-warning">Edit</button></a></td><br>
-        <td><a th:href="@{delete-clubs/{id} (id=${club.id})}"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+        <td><a class="btn btn-outline-info" type="button"
+               th:href="@{view-club-reservation-page/{clubId} (clubId=${club.id})}">Reservations</a></td>
+        <br>
+        <td><a th:href="@{edit-club-page/{clubId}( clubId=${club.id})}">
+            <button type="button" class="btn btn-outline-warning">Edit</button>
+        </a></td>
+        <br>
+        <td><a th:href="@{delete-clubs/{id} (id=${club.id})}">
+            <button type="button" class="btn btn-outline-danger">Delete</button>
+        </a></td>
 
 
         <br>
     </tr>
 
 </table>
-
-<!--        <a th:href="@{view-table-page/{tableId}(tableId=${table.id})}">View table</a>-->
-
 
 <br><br>
 

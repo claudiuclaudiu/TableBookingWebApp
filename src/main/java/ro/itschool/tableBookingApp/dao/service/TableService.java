@@ -58,8 +58,8 @@ public class TableService {
 
     }
 
-    public List<TableModel> viewReservation(int tableId) {
-        List<TableModel> optionalTableModel = tableRepository.viewReservedTable(tableId);
+    public List<TableModel> viewReservation(int clubId) {
+        List<TableModel> optionalTableModel = tableRepository.viewReservedTable(clubId  );
         return optionalTableModel;
     }
 

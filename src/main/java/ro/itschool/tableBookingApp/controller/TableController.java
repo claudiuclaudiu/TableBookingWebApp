@@ -79,10 +79,19 @@ public class TableController {
 
         List<TableModel> tableModels= tableService.viewReservation(clubId);
 
-        model.addAttribute("tables", tableModels);
+        model.addAttribute("table", tableModels);
 
         return "view-club-reservation";
     }
+
+    @PostMapping("view-club-reservation")
+    public String viewReservation(TableModel tableModel) {
+
+        tableService.updateTable(tableModel);
+
+        return "redirect:/view-club-reservation";
+    }
+
 
     @GetMapping("delete-table/{id}")
     public String deleteTable(@PathVariable("id") int tableId) {
